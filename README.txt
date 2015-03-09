@@ -23,7 +23,9 @@ class Hero implements Drawable, Positionable {
 What is done for now
 
 Intefaces:
-Drawable : interface allow to get textures of objects
+
+Drawable (interface allow to get textures of objects)
+
 Components: 
-_SpriteDrawable : Drawable
-(sprite animation class)
+
+_SpriteDrawable implements Drawable (sprite animation class)
