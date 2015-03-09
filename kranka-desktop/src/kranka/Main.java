@@ -8,9 +8,11 @@ public class Main {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "kranka";
 		cfg.useGL20 = false;
-		cfg.width = 480;
-		cfg.height = 320;
-		
+		cfg.width = 800;
+	    cfg.height = 600;
+
+	    // fullscreen
+	    //cfg.fullscreen = true;
 		new LwjglApplication(new Game(), cfg);
 	}
 }
