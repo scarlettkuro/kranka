@@ -62,7 +62,7 @@ public class _SpriteDrawable implements Drawable {
     }
     
 	public Array<TextureRegion> getFrame() {
-		output.clear(); output.add(spriteFrames[frame]);  output.add(spriteFrames[frame]);
+		output.clear(); output.add(spriteFrames[frame]); 
 		return output;
 	}
 
