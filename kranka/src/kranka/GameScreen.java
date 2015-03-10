@@ -4,6 +4,9 @@ import members.Hero;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.PerspectiveCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
@@ -20,8 +23,11 @@ public class GameScreen implements Screen, GameCommander {
 	protected Drawable dhero;
 	protected Game game;
 	float step = 0f;
-	float dur = .5f;
+	float dur = .02f;
 	private Positionable mhero;
+	Texture texture = new Texture(Gdx.files.internal("pic2.png"));
+	
+	private OrthographicCamera cam;
 	
 	public GameScreen (Game game) {
 		this.game = game;
@@ -32,6 +38,10 @@ public class GameScreen implements Screen, GameCommander {
 		dhero = (Drawable)hero;
 		mhero = (Positionable)hero;
 		
+		this.cam = new OrthographicCamera();
+		cam.setToOrtho(false); // We want (0,0) in the bottom left corner
+		cam.position.set(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, 0); // this will render the camera so that 0,0 (of everything inside batch.begin() - batch.end()) will be rendered at 0,0 on your screen
+		cam.update(); // Updates the camera
 	}
 	
 	@Override
@@ -43,7 +53,11 @@ public class GameScreen implements Screen, GameCommander {
 		}
 		//System.out.println(delta);
 		//
+		cam.position.set(mhero.getX(), Gdx.graphics.getHeight() / 2, 0); // x and y could be changed by Keyboard input for example
+		cam.update(); // Don't forget me ;)
+		batch.setProjectionMatrix(cam.combined); // Tells the spritebatch to render according to your camera
 		batch.begin();
+		batch.draw(texture, 0, 0);
 		Array<TextureRegion> frames = dhero.getFrame(delta);
 		for(int i=0;i<frames.size; i++)
 			batch.draw(frames.get(i),mhero.getX(),100);
@@ -76,12 +90,12 @@ public class GameScreen implements Screen, GameCommander {
 
 	@Override
 	public void _GC_MoveLeft() {
-		mhero.setX(mhero.getX()-100);
+		mhero.setX(mhero.getX()-10);
 	}
 
 	@Override
 	public void _GC_MoveRight() {
-		mhero.setX(mhero.getX()+100);
+		mhero.setX(mhero.getX()+10);
 	}
 	
 
