@@ -1,5 +1,7 @@
 package kranka;
 
+import members.Hero;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -9,22 +11,27 @@ import com.badlogic.gdx.utils.Array;
 import commandProccessors.GameCommander;
 import commandProccessors._GameCommandProccessor;
 import components.Drawable;
-import components._SpriteDrawable;
-//import _
+import components.Positionable;
+
 
 public class GameScreen implements Screen, GameCommander {
 
 	protected SpriteBatch batch;
-	protected Drawable anim;
+	protected Drawable dhero;
 	protected Game game;
-	int x  = 100;
 	float step = 0f;
 	float dur = .5f;
+	private Positionable mhero;
+	
 	public GameScreen (Game game) {
 		this.game = game;
-		batch = new SpriteBatch();
-		anim = new _SpriteDrawable("pic3.png", 2, 2, .5f);
 		Gdx.input.setInputProcessor(_GameCommandProccessor.inputInstance(this));
+		batch = new SpriteBatch();
+		
+		Object hero = new Hero();
+		dhero = (Drawable)hero;
+		mhero = (Positionable)hero;
+		
 	}
 	
 	@Override
@@ -37,9 +44,9 @@ public class GameScreen implements Screen, GameCommander {
 		//System.out.println(delta);
 		//
 		batch.begin();
-		Array<TextureRegion> frames = anim.getFrame(delta);
+		Array<TextureRegion> frames = dhero.getFrame(delta);
 		for(int i=0;i<frames.size; i++)
-		batch.draw(frames.get(i),x,100);
+			batch.draw(frames.get(i),mhero.getX(),100);
 		batch.end();
 	}
 	@Override
@@ -69,12 +76,12 @@ public class GameScreen implements Screen, GameCommander {
 
 	@Override
 	public void _GC_MoveLeft() {
-		x -=100;
+		mhero.setX(mhero.getX()-100);
 	}
 
 	@Override
 	public void _GC_MoveRight() {
-		x +=100;
+		mhero.setX(mhero.getX()+100);
 	}
 	
 
