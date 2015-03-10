@@ -25,7 +25,9 @@ What is done for now
 Intefaces:
 
 Drawable (interface allow to get textures of objects)
+Positionable (interface allow to set location of the objects in one-dimesional space, collision detection)
 
 Components: 
 
 _SpriteDrawable implements Drawable (sprite animation class)
+_OneDimPositionbale implements Positionable 
