@@ -26,8 +26,20 @@ Intefaces:
 
 Drawable (interface allow to get textures of objects)
 Positionable (interface allow to set location of the objects in one-dimesional space, collision detection)
+Speakable (dialog interface)
 
 Components: 
 
 _SpriteDrawable implements Drawable (sprite animation class)
 _OneDimPositionbale implements Positionable 
+_NPCSpeakable implements Speakable (n-variant simple dialog with linking next phrase)
+
+
+Command system and controls
+
+Command interfaces: 
+GameCommander (game proccess)
+
+CommandProccessors: input -> command
+
+_GameCommandProccessor (game proccess)

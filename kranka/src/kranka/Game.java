@@ -5,7 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 
 
-public class Game extends com.badlogic.gdx.Game {
+public class Game extends com.badlogic.gdx.Game  {
 	Screen screen;
 	
 	@Override
@@ -24,6 +24,7 @@ public class Game extends com.badlogic.gdx.Game {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		screen.render(Gdx.graphics.getDeltaTime());
+		
 	}
 
 	@Override
