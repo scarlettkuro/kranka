@@ -1,6 +1,6 @@
 package components;
 
-public class _OneDimPositionbale implements Positionable {
+public class _OneDimPositionbale implements iPositionable {
 
 	protected int x;
 	protected int size;
@@ -22,6 +22,11 @@ public class _OneDimPositionbale implements Positionable {
 	}
 	public boolean touches(int x) {
 		return (x > this.x) && (x < (this.x + size));
+	}
+
+	@Override
+	public String myName() {
+		return "Positionbale";
 	}
 
 }

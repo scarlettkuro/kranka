@@ -11,21 +11,21 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
-import commandProccessors.GameCommander;
+import commandProccessors.iGameCommander;
 import commandProccessors._GameCommandProccessor;
-import components.Drawable;
-import components.Positionable;
+import components.iDrawable;
+import components.iPositionable;
 
 
-public class GameScreen implements Screen, GameCommander {
+public class GameScreen implements Screen, iGameCommander {
 
 	protected SpriteBatch batch;
-	protected Drawable dhero;
+	protected iDrawable dhero;
 	protected Game game;
 	float step = 0f;
 	float dur = .02f;
-	private Positionable mhero;
-	Texture texture = new Texture(Gdx.files.internal("pic2.png"));
+	private iPositionable mhero;
+	Texture texture = new Texture(Gdx.files.internal("-.png"));
 	
 	private OrthographicCamera cam;
 	
@@ -35,13 +35,13 @@ public class GameScreen implements Screen, GameCommander {
 		batch = new SpriteBatch();
 		
 		Object hero = new Hero();
-		dhero = (Drawable)hero;
-		mhero = (Positionable)hero;
+		dhero = (iDrawable)hero;
+		mhero = (iPositionable)hero;
 		
 		this.cam = new OrthographicCamera();
 		cam.setToOrtho(false); // We want (0,0) in the bottom left corner
-		cam.position.set(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, 0); // this will render the camera so that 0,0 (of everything inside batch.begin() - batch.end()) will be rendered at 0,0 on your screen
-		cam.update(); // Updates the camera
+		//cam.position.set(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() , 0); // this will render the camera so that 0,0 (of everything inside batch.begin() - batch.end()) will be rendered at 0,0 on your screen
+		//cam.update(); // Updates the camera
 	}
 	
 	@Override
@@ -53,14 +53,14 @@ public class GameScreen implements Screen, GameCommander {
 		}
 		//System.out.println(delta);
 		//
-		cam.position.set(mhero.getX(), Gdx.graphics.getHeight() / 2, 0); // x and y could be changed by Keyboard input for example
+		cam.position.set(mhero.getX(), Gdx.graphics.getHeight(), 0); // x and y could be changed by Keyboard input for example
 		cam.update(); // Don't forget me ;)
 		batch.setProjectionMatrix(cam.combined); // Tells the spritebatch to render according to your camera
 		batch.begin();
 		batch.draw(texture, 0, 0);
 		Array<TextureRegion> frames = dhero.getFrame(delta);
 		for(int i=0;i<frames.size; i++)
-			batch.draw(frames.get(i),mhero.getX(),100);
+			batch.draw(frames.get(i),mhero.getX(),300);
 		batch.end();
 	}
 	@Override

@@ -1,6 +1,6 @@
 package components;
 
-public interface Positionable {
+public interface iPositionable extends iComponent {
 	//x coordinate of object (left corner)
 	int getX(); 
 	void setX(int x); 

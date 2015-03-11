@@ -3,15 +3,15 @@ package members;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
-import components.Drawable;
-import components.Positionable;
+import components.iDrawable;
+import components.iPositionable;
 import components._OneDimPositionbale;
 import components._SpriteDrawable;
 
-public class Hero implements Drawable,Positionable {
+public class Hero implements iDrawable,iPositionable {
 	
-	Drawable drawable;	
-	Positionable positionable;
+	iDrawable drawable;	
+	iPositionable positionable;
 	
 	public Hero() {
 		drawable = new _SpriteDrawable("pic3.png", 2, 2, .5f);

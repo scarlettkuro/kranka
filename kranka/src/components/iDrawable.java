@@ -3,7 +3,7 @@ package components;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
-public interface Drawable {
+public interface iDrawable extends iComponent {
 	Array<TextureRegion> getFrame(); //текстура для отрисовки; переключает на новый кадр
 	Array<TextureRegion> getFrame(boolean change); //текстура для отрисовки; параметр - переключать ли кадр
 	Array<TextureRegion> getFrame(int frame); //текстура для отрисовки; возвращает конкретный кадр

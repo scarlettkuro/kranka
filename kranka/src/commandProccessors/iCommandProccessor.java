@@ -2,6 +2,6 @@ package commandProccessors;
 import com.badlogic.gdx.InputProcessor;
 
 
-public interface CommandProccessor extends InputProcessor {
+public interface iCommandProccessor extends InputProcessor {
 	void executeAll();
 }

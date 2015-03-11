@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
-public class _SpriteDrawable implements Drawable {
+public class _SpriteDrawable implements iDrawable {
 	
 	//в качестве листа спрайтов загружается одна картинка
 	//в которой кадры расположены таблицей
@@ -96,6 +96,11 @@ public class _SpriteDrawable implements Drawable {
 
     public void setDuration(float duration) {
 		this.duration = duration;
+	}
+
+	@Override
+	public String myName() {
+		return "Drawable";
 	}
 
 }
